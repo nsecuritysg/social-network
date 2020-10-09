@@ -7,10 +7,10 @@ const Dialogs = props => {
   let state = props.dialogsPage;
 
   let dialogsElements = state.dialogs.map(d => (
-    <DialogItem name={d.name} id={d.id} icon={d.icon} />
+    <DialogItem name={d.name} key={d.id} id={d.id} icon={d.icon} />
   ));
   let messagesElements = state.messages.map(m => (
-    <Message message={m.message} icon={m.icon} />
+    <Message message={m.message} icon={m.icon} key={m.id} />
   ));
   let newMessageBody = state.newMessageBody;
 
@@ -46,7 +46,7 @@ const Dialogs = props => {
         <div>
           <div>
             <textarea
-              valus={newMessageBody}
+              value={newMessageBody}
               onChange={onNewMessageChange}
               placeholder="Enter your message"
             />
