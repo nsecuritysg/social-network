@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './users.module.css';
 import userPhoto from '../../assets/images/user.png';
 import { NavLink } from 'react-router-dom';
+import { usersAPI } from '../../api/api';
 
 let Users = props => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -19,7 +20,8 @@ let Users = props => {
               className={props.currentPage === p && styles.selectedPage}
               onClick={e => {
                 props.onPageChanged(p);
-              }}>
+              }}
+            >
               {p}
             </span>
           );
@@ -39,16 +41,34 @@ let Users = props => {
             <div>
               {u.followed ? (
                 <button
+                  disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
                     props.unfollow(u.id);
-                  }}>
+                    // props.toogleFollowingProgress(true, u.id);
+                    // usersAPI.unfollow(u.id).then(data => {
+                    //   if (data.resultCode == 0) {
+                    //     props.unfollow(u.id);
+                    //   }
+                    //   props.toogleFollowingProgress(false, u.id);
+                    // });
+                  }}
+                >
                   Unfollow
                 </button>
               ) : (
                 <button
+                  disabled={props.followingInProgress.some(id => id === u.id)}
                   onClick={() => {
                     props.follow(u.id);
-                  }}>
+                    // props.toogleFollowingProgress(true, u.id);
+                    // usersAPI.follow(u.id).then(data => {
+                    //   if (data.resultCode == 0) {
+                    //     props.follow(u.id);
+                    //   }
+                    //   props.toogleFollowingProgress(false, u.id);
+                    // });
+                  }}
+                >
                   Follow
                 </button>
               )}
@@ -59,8 +79,8 @@ let Users = props => {
             <div>{u.status}</div>
           </span>
           <span>
-            <div>{'u.location.country'}</div>
-            <div>{'u.location.city'}</div>
+            <div>USA</div>
+            <div>Los Angeles</div>
           </span>
         </div>
       ))}
