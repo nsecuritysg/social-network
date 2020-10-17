@@ -8,12 +8,7 @@ const Header = props => {
     <header className={styles.header}>
       <img src="https://www.freelogodesign.org/Content/img/logo-ex-7.png" />
       <div className={styles.loginBlock}>
-        <img
-          src={
-            // props.profile ? props.profile :
-            userPhoto
-          }
-        />
+        <img src={userPhoto} />
         {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
       </div>
     </header>

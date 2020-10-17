@@ -1,7 +1,8 @@
 import React from 'react';
-import s from './Dialogs.module.css';
+import styles from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './Mesage/Message';
+import { Redirect } from 'react-router-dom';
 
 const Dialogs = props => {
   let state = props.dialogsPage;
@@ -22,26 +23,12 @@ const Dialogs = props => {
     props.updateNewMessageBody(body);
   };
 
-  // let newMessageElement = React.createRef();
-
-  // let addMessage = () => {
-  //   props.dispatch(addMessageActionCreator());
-  // };
-
-  // let onMessageChange = () => {
-  //   let text = newMessageElement.current.value;
-  //   let action = updateNewMessageTextActionCreator(text);
-  //   props.dispatch(action);
-  // };
-
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialogsItems}>
+    <div className={styles.dialogs}>
+      <div className={styles.dialogsItems}>
         {dialogsElements}
-        {/* <DialogItem name={dialogData[0].name} id={dialogData[0].id} />
-        <DialogItem name={dialogData[1].name} id={dialogData[1].id} /> */}
       </div>
-      <div className={s.messages}>
+      <div className={styles.messages}>
         <div>{messagesElements}</div>
         <div>
           <div>
@@ -55,19 +42,6 @@ const Dialogs = props => {
             <button onClick={onSendMessageClick}>Send</button>
           </div>
         </div>
-
-        {/* <Message message={messageData[0].message} />
-        <Message message={messageData[1].message} /> */}
-        {/* <div>
-          <textarea
-            ref={newMessageElement}
-            onChange={onMessageChange}
-            value={props.newMessageText}
-          />
-        </div>
-        <div>
-          <button onClick={addMessage}>add Message</button>
-        </div> */}
       </div>
     </div>
   );

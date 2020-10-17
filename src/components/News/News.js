@@ -1,12 +1,29 @@
 import React from 'react';
-import classes from './News.module.css';
+import styles from './News.module.css';
 
-const News = (props) => {
+export const News = props => {
+    let state = props.newsPage;
+    let newsElements = state.news.map(n => (    
+        <New key={n.id} new={n} />
+    ));
+
     return (
         <div>
-            News
+            <h2>News</h2>
+            {newsElements}
+            <p className={styles.empty}></p>
         </div>
     )
 }
 
-export default News;
+export const New = props => {
+    return ( 
+    <div>
+        <h3>{props.new.title}</h3>
+        <div className={styles.imgCenter}>
+            <img src={props.new.image}/>
+        </div>
+        <p>{props.new.content}</p>
+    </div>
+    )
+}

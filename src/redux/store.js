@@ -87,7 +87,14 @@ let store = {
       ],
       newMessageBody: ''
     },
-    sidebar: {}
+    sidebar: {},
+    newsPage: {
+      news: [
+        {id: 1, title: 'title1', image: '', content: 'content1'},
+        {id: 2, title: 'title2', image: '', content: 'content2'},
+        {id: 3, title: 'title3', image: '', content: 'content3'}
+      ]
+    }
   },
   _callSubscriber() {
     console.log('State changed');

@@ -1,0 +1,22 @@
+h2,
+h3 {
+  text-align: center;
+}
+
+p {
+  margin: 10px 40px;
+  text-indent: 1.5em;
+  text-align: justify;
+}
+
+.imgCenter {
+  text-align: center;
+}
+
+.imgCenter img {
+  width: 45%;
+}
+
+.empty {
+  padding: 20px;
+}
