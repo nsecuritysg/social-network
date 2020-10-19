@@ -2,16 +2,17 @@ import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import styles from './ProfileInfo.module.css';
 import userPhoto from '../../../assets/images/user.png';
+import { ProfileStatus } from './ProfileStatus';
 
-const ProfileInfo = props => {
+const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
   return (
     <div>
-      <div>
+      {/* <div>
         <img src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350" />
-      </div>
+      </div> */}
       <div className={styles.descriptionBlock}>
         <div className="userPhoto">
           <img
@@ -23,6 +24,10 @@ const ProfileInfo = props => {
             }
           />
         </div>
+        <ProfileStatus
+          status={props.status}
+          updateStatus={props.updateStatus}
+        />
         {/* && */}
         {props.profile.aboutMe != null && (
           <div style={{ marginTop: '20px' }}>
@@ -31,10 +36,10 @@ const ProfileInfo = props => {
         )}
         <div>
           {Object.keys(props.profile.contacts)
-            .filter(c => {
+            .filter((c) => {
               return props.profile.contacts[c] != null;
             })
-            .map(key => (
+            .map((key) => (
               <div key={key}>
                 {key}: {props.profile.contacts[key]}
               </div>

@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 
 let initialState = {
   messages: [
@@ -71,34 +70,22 @@ let initialState = {
       icon:
         'https://icon-icons.com/icons2/1879/PNG/32/iconfinder-12-avatar-2754577_120517.png'
     }
-  ],
-  newMessageBody: ''
+  ]
 };
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
-      let body = state.newMessageBody;
+      let body = action.newMessageBody;
       return {
         ...state,
-        newMessageBody: '',
         messages: [...state.messages, { id: 6, message: body }]
-      };
-    case UPDATE_NEW_MESSAGE_BODY:
-      return {
-        ...state,
-        newMessageBody: action.body
       };
     default:
       return state;
   }
 };
 
-export const sendMessage = () => ({ type: SEND_MESSAGE });
-
-export const updateNewMessageBody = body => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  body: body
-});
+export const sendMessage = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody });
 
 export default dialogsReducer;
