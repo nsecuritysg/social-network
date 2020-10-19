@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import AddPostForm from './AddPostForm/AddPostForm';
 import styles from './MyPosts.module.css';
 import Post from './Post/Post';
 
@@ -16,27 +16,10 @@ const MyPosts = (props) => {
   return (
     <div className={styles.postsBlock}>
       <h3>My posts</h3>
-      <AddNewPostFormRedux onSubmit={onAddPost} />
+      <AddPostForm onSubmit={onAddPost} />
       <div className={styles.posts}>{postsElements}</div>
     </div>
   );
 };
-
-const AddNewPostForm = (props) => {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-        <Field name="newPostText" component="textarea" />
-      </div>
-      <div>
-        <button>Add post</button>
-      </div>
-    </form>
-  );
-};
-
-const AddNewPostFormRedux = reduxForm({
-  form: 'profileAddNewPostForm',
-})(AddNewPostForm);
 
 export default MyPosts;
