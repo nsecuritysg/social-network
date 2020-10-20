@@ -82,13 +82,12 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   userId
 });
 
-// export const loginSuccess = (email, password, rememberMe) => ({type: LOGIN_ME, email, password, rememberMe});
-
-export const getUsers = (currentPage, pageSize) =>  { 
+export const requestUsers = (page, pageSize) =>  { 
   return dispatch => {
   dispatch(toggleIsFetching(true));
+  dispatch(setCurrentPage(page));
     usersAPI
-      .getUsers(currentPage, pageSize)
+      .getUsers(page, pageSize)
       .then(data => {
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.items));
@@ -96,11 +95,6 @@ export const getUsers = (currentPage, pageSize) =>  {
       });
   }
 }
-
-// export const login = (email, password, rememberMe) => dispatch => {
-//   dispatch(loginSuccess(email, password, rememberMe));
-//   authAPI.loginMe(email, password, rememberMe);
-// }
 
 export const follow = (userId) =>  
   dispatch => {
